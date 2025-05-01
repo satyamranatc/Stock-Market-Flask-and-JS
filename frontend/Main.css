@@ -1,0 +1,330 @@
+/* Dark Theme Stock Market Viewer */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-dark: #121212;
+    --card-bg: #1e1e1e;
+    --accent: #4f9eff;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --border-color: #333;
+    --hover-color: #2c2c2c;
+    --error-color: #ff5252;
+    --success-color: #4caf50;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+.selection-area {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.company-select {
+    flex: 1;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.company-select:hover {
+    border-color: var(--accent);
+}
+
+.company-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(79, 158, 255, 0.3);
+}
+
+.fetch-btn {
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fetch-btn:hover {
+    background-color: #3d8be0;
+    transform: translateY(-2px);
+}
+
+.fetch-btn:active {
+    transform: translateY(0);
+}
+
+.data-container {
+    position: relative;
+    min-height: 200px;
+    background-color: var(--bg-dark);
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.data-display {
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+.loader {
+    display: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 15px 0;
+}
+
+/* JSON Syntax Highlighting */
+.json-key {
+    color: #9cdcfe;
+    font-weight: 500;
+}
+
+.json-string {
+    color: #ce9178;
+}
+
+.json-number {
+    color: #b5cea8;
+}
+
+.json-boolean {
+    color: #569cd6;
+}
+
+.json-null {
+    color: #569cd6;
+}
+
+/* Enhanced Data Display */
+.data-card {
+    background-color: rgba(18, 18, 18, 0.7);
+    border-left: 3px solid var(--accent);
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 4px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.data-card:hover {
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.data-category {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-category-icon {
+    margin-right: 8px;
+    color: var(--accent);
+}
+
+.data-category-title {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--border-color);
+}
+
+.data-item:last-child {
+    border-bottom: none;
+}
+
+.data-label {
+    color: #9cdcfe;
+    font-weight: 500;
+}
+
+.data-value {
+    font-weight: 400;
+}
+
+.data-value.positive {
+    color: #4caf50;
+}
+
+.data-value.negative {
+    color: #ff5252;
+}
+
+.data-value.highlight {
+    color: #ffeb3b;
+    font-weight: 500;
+}
+
+.company-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--card-bg);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.company-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.company-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.company-details {
+    display: flex;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.company-details span {
+    margin-right: 12px;
+}
+
+.price-info {
+    text-align: right;
+}
+
+.current-price {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.price-change {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.price-change.positive {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: #4caf50;
+}
+
+.price-change.negative {
+    background-color: rgba(255, 82, 82, 0.15);
+    color: #ff5252;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .selection-area {
+        flex-direction: column;
+    }
+    
+    .card {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+}

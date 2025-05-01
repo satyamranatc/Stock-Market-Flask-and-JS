@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📈 Stock Market Info Viewer | Dark Theme</title>
+    <link rel="stylesheet" href="Main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📈 Stock Market Info Viewer</h1>
+            <p class="subtitle">Get real-time market data with a sleek dark interface</p>
+        </header>
+        
+        <div class="card">
+            <div class="selection-area">
+                <select id="companySelect" class="company-select">
+                    <option value="">Select a company...</option>
+                </select>
+                <button id="fetchButton" class="fetch-btn">
+                    <i class="fas fa-chart-line"></i> Get Data
+                </button>
+            </div>
+            
+            <div class="data-container">
+                <div class="loader" id="loader"></div>
+                <div id="dataDisplay" class="data-display"></div>
+            </div>
+        </div>
+        
+        <footer>
+            <p><i class="fas fa-database"></i> Market data provided by external API | <i class="fas fa-moon"></i> Dark Theme</p>
+        </footer>
+    </div>
+
+    <script src="Main.js"></script>
+</body>
+</html>
