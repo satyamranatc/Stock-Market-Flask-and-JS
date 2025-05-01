@@ -2,7 +2,6 @@
 
 A sleek, dark-themed application for viewing real-time stock market information for popular companies around the world.
 
-![Stock Market Viewer](https://via.placeholder.com/800x400.png?text=Stock+Market+Viewer)
 
 ## Features
 
